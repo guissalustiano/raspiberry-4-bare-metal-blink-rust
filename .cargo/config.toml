@@ -1,2 +1,5 @@
+[target.'cfg(all(target_arch = "aarch64", target_os = "none"))']
+rustflags = ["-C", "link-arg=-Tlinker.ld"]
+
 [build]
 target = "aarch64-unknown-none-softfloat"

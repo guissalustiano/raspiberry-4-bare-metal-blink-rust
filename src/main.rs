@@ -1,13 +1,9 @@
 #![no_main]
 #![no_std]
 
-use core::panic::PanicInfo;
 use aarch64_cpu::asm::nop;
 
-#[panic_handler]
-fn panic(_panic: &PanicInfo<'_>) -> ! {
-    loop {}
-}
+use panic_halt as _;
 
 // https://datasheets.raspberrypi.com/bcm2711/bcm2711-peripherals.pdf
 const START:            usize = 0xFE00_0000; // Based on section 1.2 of manual

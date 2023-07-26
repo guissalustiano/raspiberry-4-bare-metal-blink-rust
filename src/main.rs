@@ -2,7 +2,7 @@
 #![no_std]
 
 use core::panic::PanicInfo;
-use core::arch;
+use aarch64_cpu::asm::nop;
 
 #[panic_handler]
 fn panic(_panic: &PanicInfo<'_>) -> ! {
@@ -27,7 +27,7 @@ pub extern "C" fn _start() -> ! {
 
             // Wait
             for _ in 0..500000 {
-                arch::asm!("nop");
+                nop();
             }
 
             // Set GPIO 42 to LOW with GPCLR[42-32]
@@ -35,7 +35,7 @@ pub extern "C" fn _start() -> ! {
 
             // Wait
             for _ in 0..500000 {
-                arch::asm!("nop");
+                nop();
             }
         }
     }
